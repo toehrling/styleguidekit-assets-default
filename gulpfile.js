@@ -83,14 +83,14 @@ gulp.task('build:js-viewer', ['clean:js'], function() {
 		.pipe(plugins.concat('patternlab-viewer.js'))
 		.pipe(gulp.dest('dist/styleguide/js'))
 		.pipe(plugins.rename({suffix: '.min'}))
-		.pipe(plugins.uglify())
+		//.pipe(plugins.uglify())
 		.pipe(gulp.dest('dist/styleguide/js'))
 		.pipe(copyPublic("styleguide/js"));
 });
 
 gulp.task('build:js-pattern', ['build:js-viewer'], function() {
 	// 'src/js/annotations-pattern.js','src/js/code-pattern.js','src/js/info-panel.js'
-	return gulp.src(['src/js/postmessage.js', 'src/js/panels-shared.js', 'src/js/clipboard.min.js', 'src/js/modal-styleguide.js'])
+	return gulp.src(['src/js/postmessage.js', 'src/js/panels-shared.js', 'src/js/clipboard.js', 'src/js/modal-styleguide.js'])
 		.pipe(plugins.jshint('.jshintrc'))
 		.pipe(plugins.jshint.reporter('default'))
 		.pipe(plugins.resolveDependencies( { pattern: /\* @requires [\s-]*(.*?\.js)/g } ))
@@ -98,7 +98,7 @@ gulp.task('build:js-pattern', ['build:js-viewer'], function() {
 		.pipe(plugins.concat('patternlab-pattern.js'))
 		.pipe(gulp.dest('dist/styleguide/js'))
 		.pipe(plugins.rename({suffix: '.min'}))
-		.pipe(plugins.uglify())
+		//.pipe(plugins.uglify())
 		.pipe(gulp.dest('dist/styleguide/js'))
 		.pipe(copyPublic("styleguide/js"));
 });
